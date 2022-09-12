@@ -11,19 +11,37 @@ module.exports = () => {
     mode: 'development',
     entry: {
       main: './src/js/index.js',
-      install: './src/js/install.js'
+      install: './src/js/install.js',
     },
     output: {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
     },
-    plugins: [
-      
-    ],
+    plugins: [],
 
     module: {
       rules: [
-        
+        // rules for images
+        {
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          type: 'asset/resource',
+        },
+        // CSS Loader
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
+        },
+        // Rules for babel
+        {
+          test: /\.m?js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: [['@babel/preset-env', { targets: 'defaults' }]],
+            },
+          },
+        },
       ],
     },
   };

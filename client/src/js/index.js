@@ -2,9 +2,14 @@ import { Workbox } from 'workbox-window';
 import Editor from './editor';
 import './database';
 import '../css/style.css';
+// Imported the logo image
+import Logo from '../images/logo.png';
 
 const main = document.querySelector('#main');
 main.innerHTML = '';
+
+// Set the logo image
+document.getElementsByClassName('navbar-brand').src = Logo;
 
 const loadSpinner = () => {
   const spinner = document.createElement('div');
