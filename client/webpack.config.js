@@ -22,6 +22,23 @@ module.exports = () => {
         template: './index.html',
         title: 'Webpack Plugin',
       }),
+
+      new WebpackPwaManifest({
+        name: 'Text Editor Application',
+        short_name: 'Text Editor',
+        description: 'Text Editior for daily notes',
+        background_color: '#99ff99',
+        theme_color: '#99ff99cd',
+        start_url: './',
+        publicPath: './',
+        icons: [
+          {
+            src: path.resolve('src/images/logo.png'),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join('assets', 'icons'),
+          },
+        ],
+      }),
     ],
 
     module: {
