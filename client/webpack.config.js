@@ -22,7 +22,12 @@ module.exports = () => {
         template: './index.html',
         title: 'Webpack Plugin',
       }),
-
+      // Service Worker
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: '/service-worker.js',
+      }),
+      // Creating a manifest
       new WebpackPwaManifest({
         name: 'Text Editor Application',
         short_name: 'Text Editor',
